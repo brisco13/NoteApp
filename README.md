@@ -7,7 +7,7 @@
 This is an application that allows notes to be drafted and saved to a JSON database within the repo. This is built using Express.JS. 
 The application is deployed here: 
 
-[Note Taker App](https://git.heroku.com/desolate-sands-63045.git)
+[Note Taker App](https://desolate-sands-63045.herokuapp.com/)
 
 ## Table of Contents
 
