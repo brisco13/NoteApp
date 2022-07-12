@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const {readFromFile, readAndAppend, generateID} = require('../helpers/functions.js');
+const {writeToFile, readAndAppend, generateID, removeElement} = require('../helpers/functions.js');
 const fs = require('fs');
+const { response } = require('express');
 
 // GET Route for retrieving all notes
 router.get('/notes', (req, res) => {
@@ -8,9 +9,7 @@ router.get('/notes', (req, res) => {
     fs.readFile(`db/db.json`, (err, data) => {
         let existingNotes = [];
         if (err) {console.log(err)};
-
         existingNotes = JSON.parse(data);
-        console.log(existingNotes);
         res.send(existingNotes);
     })
   });
@@ -39,3 +38,16 @@ router.post('/notes', (req, res) => {
           res.json('Error in posting note');
         }
     })
+
+         //Delete Route for an existing note
+ router.delete(`/notes/:id`, (req,res) => {
+    //get ID to delete
+    let deleteID = parseInt(req.params.id);
+    console.log(`DeleteId: ${deleteID}`)
+    //render db of notes
+    removeElement(`db/db.json`, deleteID)
+    res.send(response)
+});
+
+
+    module.exports = router;
