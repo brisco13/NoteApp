@@ -44,7 +44,7 @@ The user then inputs the required note title and note content to have the save b
 Notes then populate on the sidebar. These notes my be clicked on to view again - if the user would like to make a new note from an existing note, they may click the "+" icon in the corner to have a new note become available.
 ![picture3](./pictures/picture3.png "Picture3")
 The user may also delete notes after they are no longer needed by clicking on the delete icon,
-![picture4](./pictures/picture1.png "Picture4")
+![picture4](./pictures/picture4.png "Picture4")
 
 ## Credits: 
 
