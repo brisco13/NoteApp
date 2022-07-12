@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const fs = require("fs");
+const {readFromFile, readAndAppend, generateID} = require('../helpers/functions.js');
+const fs = require('fs');
 
 // GET Route for retrieving all notes
 router.get('/notes', (req, res) => {
@@ -18,7 +19,23 @@ router.get('/notes', (req, res) => {
 router.post('/notes', (req, res) => {
     console.info(`${req.method} request received to add a note`);
     console.log(req.body);
-  });
-  
-  module.exports = router;
-  
+    const {title, text} = req.body;
+    if (title && text) {
+        const newNote = {
+            title,
+            text,
+            id: generateID()
+        }
+        console.log(newNote)
+        readAndAppend(newNote, `db/db.json`)
+        
+        const response = {
+            status: 'success',
+            body: newNote,
+          };
+      
+          res.json(response);
+        } else {
+          res.json('Error in posting note');
+        }
+    })
